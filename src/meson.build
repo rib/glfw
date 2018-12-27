@@ -4,11 +4,7 @@
 
 dependencies = []
 
-sources = ['internal.h',
-           'mappings.h',
-           '../include/GLFW/glfw3.h',
-           '../include/GLFW/glfw3native.h',
-           'context.c',
+sources = ['context.c',
            'init.c',
            'input.c',
            'monitor.c',
@@ -151,6 +147,8 @@ endif
 
 if backend == 'win32'
     dependencies += cc.find_library('gdi32')
+    dependencies += cc.find_library('user32')
+    dependencies += cc.find_library('shell32')
     sources += ['win32_init.c',
                 'win32_platform.h',
                 'win32_monitor.c',
